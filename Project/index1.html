@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SkySight - Weather App</title>
+
+    <!-- Font Awesome Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    
+    <!-- Boxicons -->
+    <link href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css" rel="stylesheet">
+
+    <!-- Leaflet CSS for Map -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h2>SkySight - Weather Forecast</h2>
+            <div class="weather-input">
+                <input type="text" id="city_input" placeholder="Enter city name">
+                <button id="searchBtn"><i class="fas fa-search"></i> Search</button>
+                <button id="locationBtn"><i class="bx bx-target-lock"></i> Current Location</button>
+            </div>
+        </header>
+
+        <main class="weather-container">
+            <!-- Left Column -->
+            <section class="weather-left">
+                <div class="card" id="current-weather">
+                    <div class="current-weather">
+                        <div class="details">
+                            <p>Now</p>
+                            <h2 id="currentTemp">--°C</h2>
+                            <p id="weatherDesc">Loading...</p>
+                        </div>
+                        <div class="weather-icon">
+                            <img id="weatherIcon" src="https://openweathermap.org/img/wn/01d@2x.png" alt="Weather Icon">
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="card-footer">
+                        <p><i class="fa-regular fa-calendar"></i> <span id="currentDate">--</span></p>
+                        <p><i class="fa-solid fa-location-dot"></i> <span id="location">--</span></p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h2>Today's Hourly Forecast</h2>
+                    <div class="hourly-forecast" id="hourly-forecast"></div>
+                </div>
+                <div class="card">
+                    <h2>5-Day Forecast</h2>
+                    <div class="five-day-forecast" id="five-day-forecast"></div>
+                </div>
+
+                <!-- New Weather Alerts Section -->
+                <div class="card">
+                    <h2>Weather Alerts</h2>
+                    <div class="weather-alerts" id="weatherAlert"></div>
+                </div>
+            </section>
+
+            <!-- Right Column -->
+            <section class="weather-right">
+                <h2>Today's Highlights</h2>
+                <div class="highlights">
+                    <div class="card"><p>Air Quality Index</p><h2 id="aqiValue">--</h2></div>
+                    <div class="card"><p>Humidity</p><h2 id="humidityVal">--%</h2></div>
+                    <div class="card"><p>Wind Speed</p><h2 id="windSpeedVal">-- m/s</h2></div>
+                    <div class="card"><p>Pressure</p><h2 id="pressureVal">-- hPa</h2></div>
+                    <div class="card"><p>Visibility</p><h2 id="visibilityVal">-- km</h2></div>
+                    <div class="card"><p>Feels Like</p><h2 id="feelsVal">--°C</h2></div>
+                    <div class="card">
+                        <p>Sunrise & Sunset</p>
+                        <div class="sunrise-sunset">
+                            <div class="items">
+                                <i class="fa-solid fa-sun fa-2x"></i>
+                                <p>Sunrise</p>
+                                <h2 id="sunriseTime">--</h2>
+                            </div>
+                            <div class="items">
+                                <i class="fa-solid fa-moon fa-2x"></i>
+                                <p>Sunset</p>
+                                <h2 id="sunsetTime">--</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <section class="map-container">
+                    <h2>Location Map</h2>
+                    <div id="map"></div>
+                </section>
+            </section>
+        </main>
+        <!-- New Monthly Forecast Section -->
+        <div class="card">
+            <h2>Monthly Forecast</h2>
+            <div class="monthly-forecast" id="monthly-forecast"></div>
+        </div>
+    </div>
+    <div id="weatherAlert" style="color: red; font-weight: bold;"></div>
+
+    <!-- JavaScript -->
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js" defer></script>
+    <script src="script.js" defer></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            if (Notification.permission !== "granted" && Notification.permission !== "denied") {
+                Notification.requestPermission();
+            }
+        });
+    </script>
+</body>
+</html>

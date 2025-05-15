@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Weather Forecast</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background-color: #f0f8ff;
+      color: #333;
+      padding: 20px;
+    }
+    input {
+      padding: 10px;
+      width: 250px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 16px;
+    }
+    button {
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      cursor: pointer;
+      font-size: 16px;
+      border-radius: 5px;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+    .weather-result {
+      margin-top: 20px;
+      padding: 15px;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+      display: inline-block;
+      text-align: left;
+    }
+    .weather-icon {
+      width: 80px;
+      height: 80px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header class="header">Weather Forecast</header>
+
+    <div class="weather-input">
+      <input type="text" id="city_input" placeholder="Enter city name">
+      <button id="searchBtn">Search</button>
+      <button id="locationBtn">Use My Location</button>
+    </div>
+
+    <div class="weather-container">
+      <div class="weather-left">
+        <div class="card">
+          <h2 id="location">Location</h2>
+          <p id="currentDate">Date</p>
+          <img id="weatherIcon" src="" alt="Weather Icon">
+          <p id="currentTemp">Temperature</p>
+          <p id="weatherDesc">Description</p>
+        </div>
+
+        <div class="card">
+          <p id="sunriseTime">Sunrise</p>
+          <p id="sunsetTime">Sunset</p>
+          <p id="humidityVal">Humidity</p>
+          <p id="pressureVal">Pressure</p>
+          <p id="visibilityVal">Visibility</p>
+          <p id="windSpeedVal">Wind Speed</p>
+          <p id="feelsVal">Feels Like</p>
+        </div>
+
+        <div class="card">
+          <p id="aqiValue">AQI</p>
+        </div>
+      </div>
+
+      <div class="weather-right">
+        <div class="highlight-box" id="weatherAlert">Weather Alerts</div>
+
+        <div class="forecast-section">
+          <h3>Hourly Forecast</h3>
+          <div class="hourly-forecast" id="hourly-forecast"></div>
+        </div>
+
+        <div class="forecast-section">
+          <h3>5-Day Forecast</h3>
+          <div class="five-day-forecast" id="five-day-forecast"></div>
+        </div>
+
+        <div class="forecast-section">
+          <h3>Monthly Forecast</h3>
+          <div class="monthly-forecast" id="monthly-forecast"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="map-container">
+      <div id="map"></div>
+    </div>
+
+    <div class="loading-spinner hidden" id="loadingSpinner">
+      <div class="spinner"></div>
+    </div>
+  </div>
+</body>
+</html>
